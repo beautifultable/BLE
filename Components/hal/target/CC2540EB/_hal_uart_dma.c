@@ -27,7 +27,7 @@
   its documentation for any purpose.
 
   YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
-  PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+  PROVIDED “AS IS?WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
   INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
   NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
   TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
@@ -539,16 +539,18 @@ static void HalUARTOpenDMA(halUARTCfg_t *config)
       break;
   }
 
-  if (DMA_PM || config->flowControl)
-  {
-    UxUCR = UCR_FLOW | UCR_STOP;      // 8 bits/char; no parity; 1 stop bit; stop bit hi.
-    PxSEL |= HAL_UART_Px_CTS;         // Enable Peripheral control of CTS flow control on Px.
-  }
-  else
-  {
-    UxUCR = UCR_STOP;                 // 8 bits/char; no parity; 1 stop bit; stop bit hi.
-  }
+//  if (DMA_PM || config->flowControl)
+//  {
+//    UxUCR = UCR_FLOW | UCR_STOP;      // 8 bits/char; no parity; 1 stop bit; stop bit hi.
+//    PxSEL |= HAL_UART_Px_CTS;         // Enable Peripheral control of CTS flow control on Px.
+//  }
+//  else
+//  {
+//    UxUCR = UCR_STOP;                 // 8 bits/char; no parity; 1 stop bit; stop bit hi.
+//  }
 
+   UxUCR = UCR_STOP;
+  
   UxCSR = (CSR_MODE | CSR_RE);
 
   if (DMA_PM)
